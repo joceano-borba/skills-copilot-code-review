@@ -617,6 +617,9 @@ footer {
   position: absolute;
   top: 10px;
   right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 #user-status {
@@ -665,19 +668,221 @@ footer {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-.announcement-banner {
-  background-color: var(--success);
-  color: var(--primary-text);
+#announcement-section {
+  margin-bottom: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f6f8ff, #eef5ff);
+  border: 1px solid #d9e4ff;
+}
+
+.announcement-stack {
+  display: grid;
+  gap: 10px;
+}
+
+.announcement-card {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 10px;
+  align-items: start;
+  background-color: #ffffff;
+  border: 1px solid #dfe5f2;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 1px 4px rgba(28, 45, 94, 0.08);
+}
+
+.announcement-badge {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #f7bd59, #ff8f00);
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+.announcement-content p {
+  margin: 0;
+  color: #1f2a44;
+  font-weight: 600;
+}
+
+.announcement-meta {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: #57627a;
+  font-size: 0.78rem;
+}
+
+.announcement-meta.compact {
+  margin-top: 4px;
+}
+
+.announcement-loading {
   text-align: center;
-  padding: 15px;
-  margin: 16px 0;
-  font-weight: bold;
+  color: var(--text-secondary);
+}
+
+.announcement-empty-state {
+  border: 1px dashed #b8c6e8;
+  border-radius: 10px;
+  background-color: #fafcff;
+  color: #425173;
+  text-align: center;
+  padding: 14px;
+}
+
+.announcement-empty-state.error-state {
+  border-color: #ffccc7;
+  color: #8f2d2d;
+  background-color: #fff6f6;
+}
+
+.empty-emoji {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.announcement-modal-content {
+  max-width: 760px;
+  width: min(95vw, 760px);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-subtitle {
+  margin-bottom: 12px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.announcement-form textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px;
+  resize: vertical;
+  min-height: 76px;
+}
+
+.announcement-dates-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.announcement-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.secondary-button {
+  background-color: #f2f4f8;
+  color: #24304a;
+}
+
+.announcement-manager-list-container {
+  margin-top: 16px;
+  border-top: 1px solid var(--border-light);
+  padding-top: 14px;
+}
+
+.announcement-manager-list-container h4 {
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+.announcement-manager-list {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.announcement-manager-item {
+  border: 1px solid #dfe5f2;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.announcement-manager-item-content p {
+  margin: 0;
+  color: #1f2a44;
+}
+
+.announcement-manager-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.announcement-manager-empty {
+  border: 1px dashed #c4cde4;
+  border-radius: 8px;
+  padding: 12px;
+  color: #5b6782;
+  text-align: center;
+}
+
+.announcement-status {
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-weight: 600;
+}
+
+.status-active {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-inactive {
+  background-color: #fff3e0;
+  color: #ad5d00;
+}
+
+.danger {
+  background-color: #b3261e;
 }
 
 @media (max-width: 767px) {
-  .announcement-banner {
-    padding: 12px;
-    margin: 12px 0;
-    font-size: 0.95rem;
+  #user-controls {
+    position: static;
+    margin-top: 8px;
+    justify-content: center;
+  }
+
+  .announcement-card {
+    grid-template-columns: 1fr;
+  }
+
+  .announcement-badge {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .announcement-dates-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .announcement-manager-item {
+    flex-direction: column;
+  }
+
+  .announcement-manager-actions {
+    justify-content: flex-end;
   }
 }
