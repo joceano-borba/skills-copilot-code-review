@@ -16,6 +16,16 @@
       <h1>Mergington High School</h1>
       <h2>Atividades Extracurriculares</h2>
       <div id="user-controls">
+        <button
+          id="manage-announcements-button"
+          class="icon-button hidden"
+          aria-label="Gerenciar anúncios"
+          title="Gerenciar anúncios"
+          type="button"
+        >
+          <span class="user-icon">📣</span>
+          <span>Anúncios</span>
+        </button>
         <div id="user-status">
           <button id="login-button" class="icon-button">
             <span class="user-icon">👤</span>
@@ -30,6 +40,12 @@
     </header>
 
     <main>
+      <section id="announcement-section" aria-live="polite">
+        <div id="announcement-list" class="announcement-stack">
+          <p class="announcement-loading">Carregando anúncios...</p>
+        </div>
+      </section>
+
       <section id="activities-container">
         <div class="main-content-layout">
           <!-- Left Sidebar for Filters -->
@@ -134,9 +150,52 @@
       </div>
     </div>
 
-    <script src="app.js"></script>
-    <div class="announcement-banner">
-      📢 As inscrições para atividades estão abertas até o final do mês. Não perca sua vaga!
+    <!-- Announcement Management Modal -->
+    <div id="announcement-modal" class="modal hidden" aria-hidden="true">
+      <div class="modal-content announcement-modal-content">
+        <span class="close-announcement-modal" aria-label="Fechar modal">&times;</span>
+        <h3>Gerenciar Anúncios</h3>
+        <p class="modal-subtitle">Crie avisos por período, edite mensagens e remova itens expirados.</p>
+
+        <form id="announcement-form" class="announcement-form">
+          <input type="hidden" id="announcement-id" value="" />
+          <div class="form-group">
+            <label for="announcement-message">Mensagem:</label>
+            <textarea
+              id="announcement-message"
+              rows="3"
+              required
+              maxlength="240"
+              placeholder="Ex.: 📢 Matrículas para o clube de robótica encerram nesta sexta-feira."
+            ></textarea>
+          </div>
+          <div class="announcement-dates-grid">
+            <div class="form-group">
+              <label for="announcement-start-date">Início (opcional):</label>
+              <input type="date" id="announcement-start-date" />
+            </div>
+            <div class="form-group">
+              <label for="announcement-end-date">Expiração (obrigatório):</label>
+              <input type="date" id="announcement-end-date" required />
+            </div>
+          </div>
+          <div class="announcement-form-actions">
+            <button type="button" id="cancel-announcement-edit" class="secondary-button hidden">
+              Cancelar edição
+            </button>
+            <button type="submit" id="save-announcement-button">Salvar anúncio</button>
+          </div>
+        </form>
+
+        <div id="announcement-manager-message" class="hidden message"></div>
+
+        <div class="announcement-manager-list-container">
+          <h4>Anúncios cadastrados</h4>
+          <ul id="announcement-manager-list" class="announcement-manager-list" aria-label="Lista de anúncios"></ul>
+        </div>
+      </div>
     </div>
+
+    <script src="app.js"></script>
   </body>
 </html>
